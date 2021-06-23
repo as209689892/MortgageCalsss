@@ -2,16 +2,17 @@ package com.codewithmosh;
 public class Main {
 
     public static void main(String[] args) {
-        var mortgage = new MortgageCalculator(0,0,0);
+        var readValue = new ReadingValue();
         System.out.println("Principle: ");
-        int principle = (int)mortgage.ReadNumber(1000,1000000,-1);
+        int principle = (int)readValue.ReadNumber(1000,1000000,-1);
         System.out.println("Annual Interest Rate: ");
-        float rate = (float) mortgage.ReadNumber(0,30,-1);
+        float rate = (float) readValue.ReadNumber(0,30,-1);
         System.out.println("Year: ");
-        int year = (int)mortgage.ReadNumber(0,30,-1);
-        mortgage = new MortgageCalculator(principle, rate, year);
-        mortgage.FindingMortgage();
-        mortgage.PaymentSchedule();
+        int year = (int)readValue.ReadNumber(0,30,-1);
+        var mortgage = new MortgageCalculator(principle, rate, year);
+        var reading = new Report(mortgage);
+        reading.ReportingMortgage();
+        reading.ReportingSchedule();
 
 
     }
